@@ -1,4 +1,4 @@
-import React, { useState, Fragment } from 'react'
+import React, { useState, Fragment } from 'react';
 import DoughnutCard from '../dashboard/shared/DoughnutCard'
 import RiskCard from '../dashboard/shared/RiskCard'
 import StayCard from '../dashboard/shared/StayCard'
@@ -18,8 +18,6 @@ import img_stay1 from '../../../assets/stay1.png'
 import img_stay2 from '../../../assets/stay2.png'
 import img_stay3 from '../../../assets/stay3.png'
 import logo from '../../../assets/AutonomusLogo.png'
-// import Tabs from '@mui/material/Tabs';
-// import Tab from '@mui/material/Tab';
 import {
     Grid,
     TextField,
@@ -38,16 +36,17 @@ import {
     Tab,
     Tabs,
     Icon,
-    TablePagination,
 } from '@mui/material'
 
 import SmoothScroll from "smooth-scroll";
-import { DoubleArrow } from '@mui/icons-material'
+import { DoubleArrow } from '@mui/icons-material';
+import { withRouter } from "react-router-dom";
 
 export const scroll = new SmoothScroll('a[href*="#"]', {
     speed: 1000,
     speedAsDuration: true,
 });
+
 
 const ContentBox = styled('div')(({ theme }) => ({
     margin: 'auto',
@@ -226,7 +225,12 @@ const subscribarList = [
     },
 ]
 
-const PublicPage = () => {
+const PublicPage = (props) => {
+
+    const [expanded, setExpanded] = React.useState(false);
+
+
+    console.log(props);
     const { palette } = useTheme()
     const [keyword, setKeyword] = useState();
     const [cardname, setCardName] = useState("Card Name");
@@ -674,8 +678,8 @@ const PublicPage = () => {
                             :
                             <></>
                         }
-                        {value === 'two' ? <></> : <></>}
-                        {value === 'three' ? <></> : <></>}
+                        {value === 'two' ? <>hjkhsfkj</> : <></>}
+                        {value === 'three' ? <>fjslkjflkjljoeijoqiw</> : <></>}
                     </Grid>
                     {/* <Grid item lg={12} md={12} sm={12} xs={12}>
                         <Grid container spacing={3}>
@@ -764,4 +768,4 @@ const PublicPage = () => {
     )
 }
 
-export default PublicPage
+export default withRouter(PublicPage)

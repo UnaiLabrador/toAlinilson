@@ -11,24 +11,26 @@ import { SocketService } from './services/SocketService';
 import { USER_INITIAL_VALUE } from './constants';
 import { UserContext } from './contexts/UserContext';
 import { ChatContext } from './contexts/ChatContext';
+import Topbar from './views/layout/Topbar';
 
 const chat = new SocketService();
 
 const App = () => {
     const all_pages = useRoutes(AllPages())
     const userJSON = localStorage.getItem('chat-app-user');
-    const [ userDetails, setUserDetails ] = useState(userJSON !== null ? JSON.parse(userJSON) : USER_INITIAL_VALUE);
-    
+    const [userDetails, setUserDetails] = useState(userJSON !== null ? JSON.parse(userJSON) : USER_INITIAL_VALUE);
+
     return (
         <Provider store={Store}>
             <SettingsProvider>
                 <MatxTheme>
                     <AuthProvider>
                         <UserContext.Provider value={{ userDetails, setUserDetails }}>
+                            <Topbar />
                             <ChatContext.Provider value={chat}>
                                 {all_pages}
                             </ChatContext.Provider>
-			            </UserContext.Provider>
+                        </UserContext.Provider>
                     </AuthProvider>
                 </MatxTheme>
             </SettingsProvider>

@@ -1,4 +1,6 @@
-import React, { lazy } from 'react'
+import React, {
+    lazy
+} from 'react'
 import Loadable from 'app/components/Loadable/Loadable';
 
 const NotFound = Loadable(lazy(() => import("./NotFound")));
@@ -6,27 +8,31 @@ const ForgotPassword = Loadable(lazy(() => import("./ForgotPassword")));
 const JwtLogin = Loadable(lazy(() => import("./login/JwtLogin")));
 const JwtRegister = Loadable(lazy(() => import("./register/JwtRegister")));
 const PublicPage = Loadable(lazy(() => import("./PublicPage")));
+const MainPage = Loadable(lazy(() => import("./MainPage")));
 
-const sessionRoutes = [
-    {
+const sessionRoutes = [{
         path: '/session/signup',
-        element: <JwtRegister />,
+        element: < JwtRegister / > ,
     },
     {
         path: '/session/signin',
-        element: <JwtLogin />,
+        element: < JwtLogin / > ,
     },
     {
         path: '/session/forgot-password',
-        element: <ForgotPassword />,
+        element: < ForgotPassword / > ,
     },
     {
         path: '/session/404',
-        element: <NotFound />,
+        element: < NotFound / > ,
     },
     {
-        path: '/',
-        element: <PublicPage />,
+        path: '/prints/public/:id',
+        element: < PublicPage / >
+    },
+    {
+        path: '/main',
+        element: < MainPage / > ,
     },
 ]
 
